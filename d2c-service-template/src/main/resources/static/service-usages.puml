@@ -1,0 +1,36 @@
+@startuml
+skinparam componentStyle uml1
+
+    component ps [
+    Product Service
+    __
+     - org
+     - xyz
+     - ...
+    ]
+
+    component cs [
+    Payment Service
+    __
+     - Item
+     - etc
+     - ...
+    ]
+
+    component us [
+        Account Service
+        __
+         - Customer
+         - xyz
+         - ...
+    ]
+
+    database "d2c_db" as db{
+
+    }
+
+    ps-down-> db
+    cs -down-> db
+    us -down-> db
+
+@enduml
