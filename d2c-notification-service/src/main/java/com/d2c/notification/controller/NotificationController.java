@@ -1,7 +1,10 @@
 package com.d2c.notification.controller;
 
+import com.d2c.notification.dto.resp.ResponseBodyWrapper;
+import com.d2c.notification.dto.resp.ServiceRespDTO;
 import com.d2c.notification.service.external.AccountServiceCaller;
 import com.d2c.notification.service.external.PaymentServiceCaller;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -56,11 +59,12 @@ public class NotificationController {
         return String.format("Notification delete one accessed! notificationId : %d", notificationId);
     }
 
+    @SneakyThrows
     @GetMapping("/send")
-    public String sendInstant() {
-
-//        Map response = paymentServiceCaller.getAPITrigger(paymentServiceHost, paymentList);
-
-        return String.format("Notification triggered for: %s", 11121);
+    public ResponseBodyWrapper<ServiceRespDTO> sendInstant() {
+//        Thread.sleep(40000);
+        return new ResponseBodyWrapper<>(200, "Sent Successfully!",
+                new ServiceRespDTO(11121, String.format("Notification triggered for: %s", 11121),
+                null, null));
     }
 }

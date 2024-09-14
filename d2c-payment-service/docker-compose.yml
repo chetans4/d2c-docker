@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  # Spring Boot Application
+  spring-boot-app:
+    image: gradle:8.10-jdk17  # Gradle image with Java 17
+    container_name: d2c-payment-service-app
+    working_dir: /app
+    volumes:
+      - .:/app               # Mount project root into container
+    ports:
+      - "9082:9082"          # Expose port 8080 for Spring Boot
+    command: ./gradlew bootRun  # Command to run the Spring Boot app
+    stdin_open: true
+    tty: true
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    network_mode: "host" # Published ports are discarded when using host network mode
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    network_mode: "host"
+    env_file:
+      - ./docker/grafana.env

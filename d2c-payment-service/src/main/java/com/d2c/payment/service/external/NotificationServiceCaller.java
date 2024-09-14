@@ -1,6 +1,8 @@
 package com.d2c.payment.service.external;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +25,8 @@ public class NotificationServiceCaller {
      * @return
      */
     @CircuitBreaker(name = "notificationGetCallCB", fallbackMethod = "fallbackNotificationGetCB")
+    @Retry(name = "notificationGetCallCB", fallbackMethod = "fallbackRetryNotificationGetCB")
+//    @RateLimiter(name = "notificationGetCallCB", fallbackMethod = "fallbackRateLimiterNotificationGetCB")
     public Map getAPITrigger(String baseUrl, String path) {
         log.info("triggering notification service get api");
         Map response = restTemplate.getForObject(baseUrl+path, Map.class);
@@ -34,6 +38,20 @@ public class NotificationServiceCaller {
         log.error("Fallback for Payment Get Request.", exception);
         Map fallbackResponse = new HashMap();
         fallbackResponse.put("status", "Notification Service is not available");
+        return fallbackResponse;
+    }
+
+    public Map fallbackRetryNotificationGetCB(String baseUrl, String path, Exception exception) {
+        log.error("Fallback for Retry Payment Get Request.", exception);
+        Map fallbackResponse = new HashMap();
+        fallbackResponse.put("status", "Payment Service retrying Notification Service.");
+        return fallbackResponse;
+    }
+
+    public Map fallbackRateLimiterNotificationGetCB(String baseUrl, String path, Exception exception) {
+        log.error("Fallback for RateLimiter Payment Get Request.", exception);
+        Map fallbackResponse = new HashMap();
+        fallbackResponse.put("status", "Payment Service throwing excessive requests RateLimiter enabled Notification Service.");
         return fallbackResponse;
     }
 

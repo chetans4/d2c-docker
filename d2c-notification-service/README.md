@@ -7,3 +7,8 @@ http://localhost:9080/actuator/circuitbreakers
 http://localhost:9080/actuator/circuitbreakerevents
 
 - Can plan email trigger from CircuitBreakerEventListener
+
+sudo docker ps
+sudo docker images
+sudo docker build -t d2c-payment-service .
+sudo docker run -p 8080:9082 d2c-payment-service
