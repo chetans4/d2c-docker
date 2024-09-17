@@ -38,10 +38,10 @@ public class PaymentController {
 
     @PostMapping("/with-notification")
     public String createAndSendNotification(
-            @Value("${d2c.config.notification-service.path.send}") String sendPath,
+            @Value("${d2c.config.notification-service.path.root}") String rootPath,
             @RequestBody Map paymentBody) {
 
-        Map response = notificationServiceCaller.getAPITrigger(notificationServiceHost, sendPath);
+        Map response = notificationServiceCaller.getAPITrigger(notificationServiceHost, rootPath);
 
         return String.format("Payment create accessed! paymentBody : %s " +
                 "\n response from notification service %s", paymentBody, response);

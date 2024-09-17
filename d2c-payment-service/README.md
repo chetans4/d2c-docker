@@ -24,6 +24,8 @@ http://localhost:9082/actuator/circuitbreakerevents
 > sudo docker ps  
 > docker ps -a  
 > sudo docker images
+> docker network create my_shared_network
+
 
 [//]: # (Remove container  )
 > docker rm 634b6763e39d   
@@ -47,3 +49,19 @@ http://localhost:9082/actuator/circuitbreakerevents
     - Access "home"
     - Import dashboard
     - Upload dashboard.json from /docker
+
+#### Actions this service configuration should do:
+- Start Payment Service
+- Start Prometheus
+- Start Grafana
+- Grafana dashboard should live stream the Circuit Breaker failed and passed calls counts
+- Circuit Breaker events should display the error overview.
+
+#### Sample Grafana Dashboard
+
+- Graphs with failed calls only:
+![img.png](src/main/resources/static/img.png)
+
+
+- Graphs with success calls:
+![img.png](src/main/resources/static/img-success-calls.png)

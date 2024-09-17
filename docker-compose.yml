@@ -1,0 +1,13 @@
+# parent-project/docker-compose.yml
+version: '3'
+
+services:
+  common-service:
+    image: alpine
+    command: ["sleep", "1000"]
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    driver: bridge

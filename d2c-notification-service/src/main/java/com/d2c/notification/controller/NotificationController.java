@@ -27,8 +27,10 @@ public class NotificationController {
     private String paymentServiceHost;
 
     @GetMapping("/")
-    public String root() {
-        return "Notification root accessed!";
+    public ResponseBodyWrapper<ServiceRespDTO> root() {
+        return new ResponseBodyWrapper<>(200, "Sent Successfully!",
+                new ServiceRespDTO(11121, "test@test.com",
+                        String.format("Notification triggered for: %s", 11121), "Y"));
     }
 
     @GetMapping("/list")
@@ -60,11 +62,11 @@ public class NotificationController {
     }
 
     @SneakyThrows
-    @GetMapping("/send")
-    public ResponseBodyWrapper<ServiceRespDTO> sendInstant() {
+    @PostMapping("/send")
+    public ResponseBodyWrapper<ServiceRespDTO> sendInstant(@RequestBody Map notificationBody) {
 //        Thread.sleep(40000);
         return new ResponseBodyWrapper<>(200, "Sent Successfully!",
-                new ServiceRespDTO(11121, String.format("Notification triggered for: %s", 11121),
-                null, null));
+                new ServiceRespDTO(11121, "test@test.com",
+                        String.format("Notification triggered for: %s", 11121), "Y"));
     }
 }
