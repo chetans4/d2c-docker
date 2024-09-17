@@ -60,8 +60,8 @@ http://localhost:9082/actuator/circuitbreakerevents
 #### Sample Grafana Dashboard
 
 - Graphs with failed calls only:
-![img.png](src/main/resources/static/img.png)
+![img.png](https://github.com/chetans4/d2c/blob/master/d2c-payment-service/src/main/resources/static/img.png)
 
 
 - Graphs with success calls:
-![img.png](https://github.com/chetans4/d2c/blob/master/d2c-payment-service/src/main/resources/static/img.png)
+![img.png](https://github.com/chetans4/d2c/blob/master/d2c-payment-service/src/main/resources/static/img-success-calls.png)
