@@ -25,7 +25,7 @@ http://localhost:9082/actuator/circuitbreakerevents
 > docker ps -a  
 > sudo docker images
 > docker network create my_shared_network
-
+> docker-compose -f ./docker-compose.yml -f ./d2c-payment-service/docker-compose.yml up
 
 [//]: # (Remove container  )
 > docker rm 634b6763e39d   
@@ -60,8 +60,8 @@ http://localhost:9082/actuator/circuitbreakerevents
 #### Sample Grafana Dashboard
 
 - Graphs with failed calls only:
-![img.png](src/main/resources/static/img.png)
+![img.png](https://github.com/chetans4/d2c/blob/f57b98046167d4aa557fd37b1aae2f2e6a9bc4be/d2c-payment-service/src/main/resources/static/img.png)
 
 
 - Graphs with success calls:
-![img.png](src/main/resources/static/img-success-calls.png)
+![img.png](https://github.com/chetans4/d2c/blob/f57b98046167d4aa557fd37b1aae2f2e6a9bc4be/d2c-payment-service/src/main/resources/static/img-success-calls.png)
