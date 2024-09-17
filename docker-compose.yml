@@ -2,12 +2,23 @@
 version: '3'
 
 services:
-  common-service:
-    image: alpine
-    command: ["sleep", "1000"]
-    networks:
-      - shared-network
+  d2c-payment-service:
+    extends:
+      file: d2c-payment-service/docker-compose.yml
+      service: d2c-payment-service
+  d2c-notification-service:
+    extends:
+      file: d2c-notification-service/docker-compose.yml
+      service: d2c-notification-service
+  prometheus:
+    extends:
+      file: d2c-payment-service/docker-compose.yml
+      service: prometheus
+  grafana:
+    extends:
+      file: d2c-payment-service/docker-compose.yml
+      service: grafana
 
 networks:
-  shared-network:
+  my_shared_network:
     driver: bridge

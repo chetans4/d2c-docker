@@ -2,7 +2,7 @@ version: '3'
 
 services:
   # Spring Boot Application
-  spring-boot-app:
+  d2c-notification-service:
 #    extends:
 #      file: ../docker-compose.yml
 #      service: common-service
