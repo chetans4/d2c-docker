@@ -64,4 +64,4 @@ http://localhost:9082/actuator/circuitbreakerevents
 
 
 - Graphs with success calls:
-![img.png](src/main/resources/static/img-success-calls.png)
+![img.png](https://github.com/chetans4/d2c/blob/master/d2c-payment-service/src/main/resources/static/img.png)
