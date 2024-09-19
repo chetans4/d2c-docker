@@ -16,7 +16,7 @@ services:
       service: prometheus
   grafana:
     extends:
-      file: d2c-payment-service/docker-compose.yml
+      file: d2c-payment-service/docker-compose-grafana.yml
       service: grafana
 
 networks:

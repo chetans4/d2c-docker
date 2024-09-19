@@ -57,6 +57,15 @@ http://localhost:9082/actuator/circuitbreakerevents
 - Grafana dashboard should live stream the Circuit Breaker failed and passed calls counts
 - Circuit Breaker events should display the error overview.
 
+### TODO:
+[] Assign volume persistant memory to Grafana container, deleting container should not impact previously done configurations.
+[] Setup K8S to orchestrate docker container, all 3 services (3 container - 3 pods) in one k8s node and scale as per load.
+[] Assign volumes to k8s cluster.
+[] Write Cloud Formation to Create VPC, Public and Private Subnets and EC2 instance.
+[] Automate installing and running of K8S + Docker + D2C Microservices with Prometheus and Grafana
+[] Expose endpoints to call services and view metrices. 
+[] Setup backups / snapshots for data recovery.
+
 #### Sample Grafana Dashboard
 
 - Graphs with failed calls only:
@@ -65,3 +74,6 @@ http://localhost:9082/actuator/circuitbreakerevents
 
 - Graphs with success calls:
 ![img.png](https://github.com/chetans4/d2c/blob/master/d2c-payment-service/src/main/resources/static/img-success-calls.png)
+
+- Graphs with CPU and Service monitoring:
+![img.png](https://github.com/chetans4/d2c/blob/master/d2c-payment-service/src/main/resources/static/img-cpu.png)

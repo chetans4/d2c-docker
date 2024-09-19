@@ -3,9 +3,6 @@ version: '3'
 services:
   # Spring Boot Application
   d2c-payment-service:
-#    extends:
-#      file: ../docker-compose.yml
-#      service: common-service
     image: gradle:8.10-jdk17  # Gradle image with Java 17
     container_name: d2c-payment-service-app
     working_dir: /app
@@ -23,17 +20,16 @@ services:
 
   prometheus:
     image: prom/prometheus
+#    restart: unless-stopped
     container_name: prometheus
     network_mode: "host" # Published ports are discarded when using host network mode
     volumes:
       - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
-    image: grafana/grafana
-    container_name: grafana
-    network_mode: "host"
-    env_file:
-      - ./docker/grafana.env
+    extends:
+      file: docker-compose-grafana.yml
+      service: grafana
 
 networks:
   my_shared_network:
