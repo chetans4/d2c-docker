@@ -75,7 +75,7 @@ http://localhost:9082/actuator/circuitbreakerevents
 - Grafana dashboard should live stream the Circuit Breaker failed and passed calls counts
 - Circuit Breaker events should display the error overview.
 
-### TODO:
+### Upcomming:
 [] Assign volume persistant memory to Grafana container, deleting container should not impact previously done configurations.  
 [] Setup K8S to orchestrate docker container, all 3 services (3 container - 3 pods) in one k8s node and scale as per load.  
 [] Assign volumes to k8s cluster.  
