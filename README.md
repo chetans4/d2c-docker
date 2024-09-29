@@ -1,8 +1,13 @@
 ## This repository holds microservices and distributed system configurations with Docker for Direct To Consumer (d2c) Portal.
 
-http://localhost:9082/actuator
-http://localhost:9082/actuator/circuitbreakers
-http://localhost:9082/actuator/circuitbreakerevents
+### Monitoring
+
+http://localhost:9082/actuator  
+http://localhost:9082/actuator/circuitbreakers  
+http://localhost:9082/actuator/circuitbreakerevents  
+
+### Postman Workspace
+- https://www.postman.com/satellite-pilot-91872991/workspace/d2c-workspace
 
 - Can plan email trigger from CircuitBreakerEventListener
 
