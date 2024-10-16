@@ -31,6 +31,6 @@ services:
       file: docker-compose-grafana.yml
       service: grafana
 
-networks:
-  my_shared_network:
-    external: true
+#networks:
+ # my_shared_network:
+  #  external: true
